@@ -1,0 +1,28 @@
+{
+  "name": "poly_four",
+  "version": "0.0.1",
+  "authors": [
+    "Michael Ries <michael@riesd.com>"
+  ],
+  "description": "A Score Four game",
+  "main": "index.html",
+  "keywords": [
+    "score",
+    "four"
+  ],
+  "license": "MIT",
+  "homepage": "http://riesd.com/experiments/score_four/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.4",
+    "core-elements": "Polymer/core-elements#~0.3.4",
+    "paper-elements": "Polymer/paper-elements#~0.3.4"
+  }
+}

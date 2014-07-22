@@ -1,0 +1,30 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<polymer-element name="score-four-game-cell">
+  <template>
+    <style>
+    :host {
+      flex-grow: 1;
+      padding: 10px;
+    }
+
+    div.circle {
+      background-color: white;
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+    }
+
+    div.circle.red {
+      background-color: red;
+    }
+    div.circle.black {
+      background-color: black;
+    }
+    </style>
+    <div class="cell"><div class="circle"></div></div>
+  </template>
+  <script>
+  Polymer({});
+  </script>
+</polymer-element>

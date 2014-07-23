@@ -11,25 +11,44 @@
       justify-content: center;
     }
     </style>
-    <score-four-game-column pieces="{{columns[0]}}"></score-four-game-column>
-    <score-four-game-column pieces="{{columns[1]}}"></score-four-game-column>
-    <score-four-game-column pieces="{{columns[2]}}"></score-four-game-column>
-    <score-four-game-column pieces="{{columns[3]}}"></score-four-game-column>
-    <score-four-game-column pieces="{{columns[4]}}"></score-four-game-column>
-    <score-four-game-column pieces="{{columns[5]}}"></score-four-game-column>
-    <score-four-game-column pieces="{{columns[6]}}"></score-four-game-column>
+    <score-four-game-column id="0" pieces="{{columns[0]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="1" pieces="{{columns[1]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="2" pieces="{{columns[2]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="3" pieces="{{columns[3]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="4" pieces="{{columns[4]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="5" pieces="{{columns[5]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="6" pieces="{{columns[6]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
   </template>
   <script>
   Polymer({
     columns: [
-      ["red", "red", "red"],
+      [],
       [],
       [],
       [],
       [],
       [],
       []
-    ]
+    ],
+    currentPlayer: "red",
+    handleColumnTap: function(event, detail, sender){
+      var column_index = Number.parseInt(sender.id);
+      this.playColumn(column_index);
+    },
+    playColumn: function(column_index){
+      if( this.columns[column_index].length == 6 ){
+        return false;
+      }
+      this.columns[column_index].push(this.currentPlayer);
+      this.togglePlayer();
+    },
+    togglePlayer: function(){
+      if( this.currentPlayer == "red" ){
+        this.currentPlayer = "black";
+      } else {
+        this.currentPlayer = "red";
+      }
+    }
   });
   </script>
 </polymer-element>

@@ -1,6 +1,6 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 
-<polymer-element name="score-four-game-cell">
+<polymer-element name="score-four-game-cell" attributes="piece">
   <template>
     <style>
     :host {
@@ -43,7 +43,7 @@
       background-color: black;
     }
     </style>
-    <div class="cell"><div class="circle"></div></div>
+    <div class="cell"><div class="circle {{piece}}"></div></div>
   </template>
   <script>
   Polymer({});

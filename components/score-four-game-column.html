@@ -1,7 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/components/score-four-game-cell.html">
 
-<polymer-element name="score-four-game-column">
+<polymer-element name="score-four-game-column" attributes="pieces">
   <template>
     <style>
     :host {
@@ -14,14 +14,16 @@
       justify-content: center;
     }
     </style>
-    <score-four-game-cell></score-four-game-cell>
-    <score-four-game-cell></score-four-game-cell>
-    <score-four-game-cell></score-four-game-cell>
-    <score-four-game-cell></score-four-game-cell>
-    <score-four-game-cell></score-four-game-cell>
-    <score-four-game-cell></score-four-game-cell>
+    <score-four-game-cell piece="{{pieces[5]}}"></score-four-game-cell>
+    <score-four-game-cell piece="{{pieces[4]}}"></score-four-game-cell>
+    <score-four-game-cell piece="{{pieces[3]}}"></score-four-game-cell>
+    <score-four-game-cell piece="{{pieces[2]}}"></score-four-game-cell>
+    <score-four-game-cell piece="{{pieces[1]}}"></score-four-game-cell>
+    <score-four-game-cell piece="{{pieces[0]}}"></score-four-game-cell>
   </template>
   <script>
-  Polymer({});
+  Polymer({
+    pieces: []
+  });
   </script>
 </polymer-element>

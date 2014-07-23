@@ -11,15 +11,25 @@
       justify-content: center;
     }
     </style>
-    <score-four-game-column></score-four-game-column>
-    <score-four-game-column></score-four-game-column>
-    <score-four-game-column></score-four-game-column>
-    <score-four-game-column></score-four-game-column>
-    <score-four-game-column></score-four-game-column>
-    <score-four-game-column></score-four-game-column>
-    <score-four-game-column></score-four-game-column>
+    <score-four-game-column pieces="{{columns[0]}}"></score-four-game-column>
+    <score-four-game-column pieces="{{columns[1]}}"></score-four-game-column>
+    <score-four-game-column pieces="{{columns[2]}}"></score-four-game-column>
+    <score-four-game-column pieces="{{columns[3]}}"></score-four-game-column>
+    <score-four-game-column pieces="{{columns[4]}}"></score-four-game-column>
+    <score-four-game-column pieces="{{columns[5]}}"></score-four-game-column>
+    <score-four-game-column pieces="{{columns[6]}}"></score-four-game-column>
   </template>
   <script>
-  Polymer({});
+  Polymer({
+    columns: [
+      ["red", "red", "red"],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ]
+  });
   </script>
 </polymer-element>

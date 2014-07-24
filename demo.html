@@ -429,7 +429,7 @@ d.prototype={valueFn:function(){if(!this.valueFn_){var a=this.value;this.valueFn
   Polymer('score-four-board',{
     handleColumnTap: function(event, detail, sender){
       var column_index = Number.parseInt(sender.id);
-      this.fire('column-select', column_index);
+      this.fire('column-select', {"col": column_index});
     }
   });
   </script>
@@ -453,7 +453,8 @@ d.prototype={valueFn:function(){if(!this.valueFn_){var a=this.value;this.valueFn
       []
     ],
     currentPlayer: "red",
-    playColumn: function(event, column_index, sender){
+    playColumn: function(event, details, sender){
+      var column_index = details.col;
       if( this.columns[column_index].length == 6 ){
         return false;
       }

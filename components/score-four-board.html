@@ -23,7 +23,7 @@
   Polymer({
     handleColumnTap: function(event, detail, sender){
       var column_index = Number.parseInt(sender.id);
-      this.fire('column-select', column_index);
+      this.fire('column-select', {"col": column_index});
     }
   });
   </script>

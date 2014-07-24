@@ -20,7 +20,8 @@
       []
     ],
     currentPlayer: "red",
-    playColumn: function(event, column_index, sender){
+    playColumn: function(event, details, sender){
+      var column_index = details.col;
       if( this.columns[column_index].length == 6 ){
         return false;
       }

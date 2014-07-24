@@ -1,0 +1,30 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="score-four-game-column.html">
+
+<polymer-element name="score-four-board" attributes="columns">
+  <template>
+    <style>
+    :host {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: center;
+    }
+    </style>
+    <score-four-game-column id="0" pieces="{{columns[0]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="1" pieces="{{columns[1]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="2" pieces="{{columns[2]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="3" pieces="{{columns[3]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="4" pieces="{{columns[4]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="5" pieces="{{columns[5]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+    <score-four-game-column id="6" pieces="{{columns[6]}}" on-tap="{{handleColumnTap}}"></score-four-game-column>
+  </template>
+  <script>
+  Polymer({
+    handleColumnTap: function(event, detail, sender){
+      var column_index = Number.parseInt(sender.id);
+      this.fire('column-select', column_index);
+    }
+  });
+  </script>
+</polymer-element>

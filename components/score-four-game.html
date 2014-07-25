@@ -8,7 +8,24 @@
       on-column-select="{{playColumn}}">
     </score-four-board>
   </template>
+  <script src="//underscorejs.org/underscore-min.js"></script>
   <script>
+  var winning_patterns = [
+    [[0,0],  [0,-1], [0,-2], [0,-3]], //down
+    [[-3,0], [-2,0], [-1,0], [0,0] ], //left
+    [[-2,0], [-1,0], [0,0],  [1,0] ], //left-right
+    [[-1,0], [0,0],  [1,0],  [2,0] ], //left-right
+    [[0,0],  [1,0],  [2,0],  [3,0] ], //right
+    [[0,0],  [1,-1], [2,-2], [3,-3]], //right-down
+    [[-1,1], [0,0],  [1,-1], [2,-2]], //left-up - right-down
+    [[-2,2], [-1,1], [0,0],  [1,-1]], //left-up - right-down
+    [[-3,3], [-2,2], [-1,1], [0,0] ], //left-up
+    [[0,0],  [1,1],  [2,2],  [3,3] ], //right-up
+    [[-1,-1],[0,0],  [1,1],  [2,2] ], //left-down - right-up
+    [[-2,-2],[-1,-1],[0,0],  [1,1] ], //left-down - right-up
+    [[-3,-3],[-2,-2],[-1,-1],[0,0] ]  //left-down
+  ];
+
   Polymer({
     columns: [
       [],
@@ -20,13 +37,23 @@
       []
     ],
     currentPlayer: "red",
+    gameOver: false,
     playColumn: function(event, details, sender){
       var column_index = details.col;
       if( this.columns[column_index].length == 6 ){
         return false;
       }
+      if( this.gameOver ){
+        return false;
+      }
+
       this.columns[column_index].push(this.currentPlayer);
-      this.togglePlayer();
+      if( this.isGameOver(column_index) ){
+        this.gameOver = true;
+        this.fire('game-over', {winner: this.currentPlayer});
+      } else {
+        this.togglePlayer();
+      }
     },
     togglePlayer: function(){
       if( this.currentPlayer == "red" ){
@@ -34,6 +61,25 @@
       } else {
         this.currentPlayer = "red";
       }
+    },
+    isGameOver: function(column_index){
+      var x = column_index;
+      var y = this.columns[x].length - 1;
+      var cols = this.columns;
+      var color = this.currentPlayer;
+      var over = _.some(winning_patterns, function(pattern){
+        return _.every(pattern, function(location){
+          var dx = location[0];
+          var dy = location[1];
+          var col = cols[x+dx];
+          if ( col ){
+            return col[y+dy] == color;
+          } else {
+            return false;
+          }
+        })
+      })
+      return over;
     }
   });
   </script>

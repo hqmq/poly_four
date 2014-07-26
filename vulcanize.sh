@@ -1,1 +1,1 @@
-vulcanize --inline --verbose -o demo.html index.html
+vulcanize --inline --verbose -o index.html dev.html

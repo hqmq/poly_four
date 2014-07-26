@@ -1,0 +1,33 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/slide-from-right.html">
+<link rel="import" href="score-four-game.html">
+
+<polymer-element name="score-four">
+  <template>
+    <core-animated-pages transitions="slide-from-right" id="pages">
+      <section on-tap="{{startGame}}">
+        <h1>Welcome</h1>
+      </section>
+      <section>
+        <score-four-game id="game" on-game-over="{{gameOver}}"></score-four-game>
+      </section>
+      <section on-tap="{{startGame}}">
+        <h1>{{lastWinner}} Wins!</h1>
+      </section>
+    </core-animated-pages>
+  </template>
+  <script>
+    Polymer({
+      lastWinner: null,
+      gameOver: function(ev, detail, sender){
+        this.lastWinner = detail.winner;
+        this.$.pages.selected = 2;
+      },
+      startGame: function(ev, detail, sender){
+        this.$.game.restart();
+        this.$.pages.selected = 1;
+      }
+    });
+  </script>
+</polymer-element>

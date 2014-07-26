@@ -73,6 +73,19 @@
         })
       })
       return over;
+    },
+    restart: function(){
+      this.gameOver = false;
+      this.currentPlayer = "red";
+      this.columns = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ];
     }
   });
   </script>

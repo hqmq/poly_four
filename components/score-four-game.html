@@ -40,10 +40,7 @@
     gameOver: false,
     playColumn: function(event, details, sender){
       var column_index = details.col;
-      if( this.columns[column_index].length == 6 ){
-        return false;
-      }
-      if( this.gameOver ){
+      if( this.gameOver || this.columns[column_index].length == 6 ){
         return false;
       }
 
@@ -72,11 +69,7 @@
           var dx = location[0];
           var dy = location[1];
           var col = cols[x+dx];
-          if ( col ){
-            return col[y+dy] == color;
-          } else {
-            return false;
-          }
+          return col && col[y+dy] == color;
         })
       })
       return over;
